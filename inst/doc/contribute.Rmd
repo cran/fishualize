@@ -1,0 +1,56 @@
+---
+title: "How to contribute?"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to contribute?}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+[fishualize](https://github.com/nschiett/fishualize) is a project that will be updated regularly. There are plenty more fish in the sea (and freshwater too, I guess), which are all waiting to be fishualized! Your favorite fish is currently not included in [fishualize](https://github.com/nschiett/fishualize), you say? Do not despair! You can make it happen and contribute to the wonderful community of nerds on #TeamFish! It’s a piece of cake and here’s how to do it:
+
+### 1) Browse the internet or your personal folders until you find a pretty picture of your favorite fish
+### 2) Go to https://coolors.co/app or use your illustration software of choice (Adobe Illustrato, Inkscape, etc).
+### 3) Press the camera symbol and either paste the link of a picture from the internet or upload one from your computer.
+### 4) Let the fun begin! Carefully pick 5 colors that represent the full beauty of your fish. Make sure to follow an appropriate color order according to color spectrum: red, orange, yellow, green, blue, and violet (or vice versa). 
+### 5) Copy the hex color codes.
+### 6) Go to https://github.com/nschiett/fishualize/issues, start a new issue with the label "enhancement" and paste the 5 colors and the species name (only scientific names please, i.e. genus and species separated by an underscore: "Zebrasoma_velifer").
+### 7) Awesome. Your work is done! We will add your fish color palette as soon as we can. 
+
+# Frequently asked questions
+
+### I am having SO.MUCH.FUN making fish color palettes and want to help more. How do I do this? 
+
+For those feeling motivated, feel free to start an excel file with two columns (species and hex codes) like this: 
+
+|species         | hex  |
+|----------------|------|
+|Zebrasoma_scopas|#12345|
+|Zebrasoma_scopas|#1234a|
+|Zebrasoma_scopas|#1234b|
+|Zebrasoma_scopas|#1234c|
+|Zebrasoma_scopas|#1234d|
+|...             |...   |
+
+Once you are satisfied with the color palettes you created, you can send your excel file to nina.schiettekatte@gmail.com. 
+
+### I want to use the color palette of my study species, but I am not happy with the palette as it is currently provided. What can I do?    
+
+We are happy with any reasonable suggestions and improvements on existing palettes. Go to https://github.com/nschiett/fishualize/issues, start a new issue with the label “enhancement” and suggest an alternative color palette.
+
+### I love fishualize. Can I put the fishualize hexagon sticker on my laptop?
+Yes, by all means! Go for it! Not nerdy at all.
+
+
+
+
+
+
