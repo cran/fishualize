@@ -1,10 +1,10 @@
-## ---- include = FALSE----------------------------------------------------
+## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ----setup, include=FALSE------------------------------------------------
+## ----setup, include=FALSE-----------------------------------------------------
 knitr::opts_chunk$set(echo = TRUE)
 
 img <- function(obj, nam) {
@@ -12,7 +12,7 @@ img <- function(obj, nam) {
         main = nam, ylab = "",xlab = " ", xaxt = "n", yaxt = "n",  bty = "n")
 }
 
-## ---- echo=FALSE, warning=FALSE, message=FALSE---------------------------
+## ---- echo=FALSE, warning=FALSE, message=FALSE--------------------------------
 library(fishualize)
 c <- sort(unique(fishualize::fishcolors$option))
 invisible(lapply(1:length(c), function(i){
