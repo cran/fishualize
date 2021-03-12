@@ -1,3 +1,15 @@
+try_GET <- function(x, ...) {
+  tryCatch(
+    httr::GET(url = x, httr::timeout(10), ...),
+    error = function(e) conditionMessage(e),
+    warning = function(w) conditionMessage(w)
+  )
+}
+is_response <- function(x) {
+  class(x) == "response"
+}
+
+
 #' Available fish silhouettes
 #'
 #' This function returns a dataframe containing the all the available fish
@@ -9,6 +21,8 @@
 #' @importFrom httr GET
 #' @importFrom httr stop_for_status
 #' @importFrom httr content
+#' @importFrom curl has_internet
+#' @importFrom httr message_for_status
 #' @importFrom magrittr "%>%"
 #' @importFrom stringr str_split
 #' @importFrom stringr str_subset
@@ -29,8 +43,27 @@
 
 fishapes <- function(){
 
+  # First check internet connection
+  if (!curl::has_internet()) {
+    message("No internet connection.")
+    return(invisible(NULL))
+  }
 
-  req <- httr::GET("https://github.com/simonjbrandl/fishape/tree/master/shapes")
+  url <- "https://github.com/simonjbrandl/fishape/tree/master/shapes"
+
+  # Then try for timeout problems
+  resp <- try_GET(url)
+  if (!is_response(resp)) {
+    message(resp)
+    return(invisible(NULL))
+  }
+  # Then stop if status > 400
+  if (httr::http_error(resp)) {
+    httr::message_for_status(resp)
+    return(invisible(NULL))
+  }
+  req <- httr::GET(url)
+
   httr::stop_for_status(req)
   text <- httr::content(req, "text")
 
@@ -43,7 +76,7 @@ fishapes <- function(){
     tidyr::separate(text_sub, into = c("family", "option"), sep = "_") %>%
     dplyr::mutate(option = stringr::str_replace(.data$option, "[.]", "_"))
 
-  return(df)
+  df
 }
 
 
@@ -77,6 +110,9 @@ fishapes <- function(){
 #' @importFrom grid rasterGrob
 #' @importFrom png readPNG
 #' @importFrom scales alpha
+#' @importFrom httr GET
+#' @importFrom httr message_for_status
+#' @importFrom curl has_internet
 #'
 #'
 #' @examples
@@ -138,6 +174,36 @@ add_fishape <- function(family = "Pomacanthidae",
   url <- paste0(
     "https://raw.githubusercontent.com/simonjbrandl/fishape/master/shapes/",
     family, "_", gsub("_", ".", option), ".png")
+
+  try_GET <- function(x, ...) {
+    tryCatch(
+      httr::GET(url = x, httr::timeout(10), ...),
+      error = function(e) conditionMessage(e),
+      warning = function(w) conditionMessage(w)
+    )
+  }
+
+  is_response <- function(x) {
+    class(x) == "response"
+  }
+
+  # First check internet connection
+  if (!curl::has_internet()) {
+    message("No internet connection.")
+    return(invisible(NULL))
+  }
+  # Then try for timeout problems
+  resp <- try_GET(url)
+  if (!is_response(resp)) {
+    message(resp)
+    return(invisible(NULL))
+  }
+  # Then stop if status > 400
+  if (httr::http_error(resp)) {
+    httr::message_for_status(resp)
+    return(invisible(NULL))
+  }
+
 
   img <- wrap.url(url, png::readPNG)
   g <- grid::rasterGrob(img, interpolate=TRUE)
