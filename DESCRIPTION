@@ -1,7 +1,7 @@
 Package: fishualize
 Type: Package
 Title: Color Palettes Based on Fish Species
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: c(
     person("Nina M. D.", "Schiettekatte", 
     email = "nina.schiettekatte@gmail.com", 
@@ -22,9 +22,9 @@ Imports: ggplot2 (>= 1.0.1), gridExtra, grid, png, downloader, utils,
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2021-03-11 16:48:40 UTC; nschiettekatte
+Packaged: 2021-04-09 16:36:38 UTC; nschiettekatte
 Author: Nina M. D. Schiettekatte [cre, aut],
   Simon J. Brandl [aut],
   Jordan M. Casey [aut]
 Repository: CRAN
-Date/Publication: 2021-03-12 08:00:02 UTC
+Date/Publication: 2021-04-09 16:50:02 UTC
