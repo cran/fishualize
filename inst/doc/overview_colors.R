@@ -17,7 +17,7 @@ library(fishualize)
 c <- sort(unique(fishualize::fishcolors$option))
 invisible(lapply(1:length(c), function(i){
   sp <- c[i]
-  img(fishualize::fish(5, option = sp), sp)
+   img(fishualize::fish(5, option = sp), sp)
   return(" ")
 }))
 
